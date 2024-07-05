@@ -6410,7 +6410,9 @@ html {
   height: 170px;
   border-radius: 100%;
   margin-bottom: 27px;
-  background-color: var(--light_back);
+  background-image: url('https://icons.veryicon.com/png/o/internet--web/55-common-web-icons/person-4.png');
+  background-size: cover;
+  background-position: center;
 }
 #lk .main__content .lk__profile_name {
   font-size: 30px;
