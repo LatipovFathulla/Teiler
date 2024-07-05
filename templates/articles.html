@@ -1,0 +1,298 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+            <main class="main">
+                <div class="container">
+                    
+                    <div id="arts">
+                        <div class="main__content">
+                            <div class="arts">
+                                <div class="arts__side">
+                                    <div class="arts__side_tabs">
+                                         {% for category in help_categories %}
+                                            <div class="tab__list">
+                                                <div class="tab__list_head" data-drophead>
+                                                     {{ category.title }}
+                                                     <svg data-drophead width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path data-drophead d="M13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L7 2.41421L1.70711 7.70711C1.31658 8.09763 0.683417 8.09763 0.292893 7.70711C-0.0976315 7.31658 -0.0976315 6.68342 0.292893 6.29289L6.29289 0.292893C6.68342 -0.0976315 7.31658 -0.0976315 7.70711 0.292893L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711Z" fill="#3D5165"/>
+                                                        </svg>
+                                                    </div>
+                                                <ul class="tab__list_body">
+                                                    {% for help_subcategory in category.help_subcategories.all %}
+                                                         <li class="item">{{ help_subcategory }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                         {% endfor %}
+                                        <!-- <div class="tab__list">
+                                            <div class="tab__list_head" data-drophead>
+                                                 Мой заказ
+                                                 <svg data-drophead width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path data-drophead d="M13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L7 2.41421L1.70711 7.70711C1.31658 8.09763 0.683417 8.09763 0.292893 7.70711C-0.0976315 7.31658 -0.0976315 6.68342 0.292893 6.29289L6.29289 0.292893C6.68342 -0.0976315 7.31658 -0.0976315 7.70711 0.292893L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711Z" fill="#3D5165"/>
+                                                    </svg>
+                                                </div>
+                                            <ul class="tab__list_body">
+                                                <li class="item">Как посмотреть статус заказа</li>
+                                                <li class="item">Как сделать заказ</li>
+                                                <li class="item">Как редактироват</li>
+                                                <li class="item">Как редактироват или отменить заказ</li>
+                                                <li class="item">Мой заказ отменили</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="tab__list">
+                                            <div class="tab__list_head" data-drophead>
+                                                 Мой заказ
+                                                 <svg data-drophead width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path data-drophead d="M13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L7 2.41421L1.70711 7.70711C1.31658 8.09763 0.683417 8.09763 0.292893 7.70711C-0.0976315 7.31658 -0.0976315 6.68342 0.292893 6.29289L6.29289 0.292893C6.68342 -0.0976315 7.31658 -0.0976315 7.70711 0.292893L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711Z" fill="#3D5165"/>
+                                                    </svg>
+                                                </div>
+                                            <ul class="tab__list_body">
+                                                <li class="item">Как посмотреть статус заказа</li>
+                                                <li class="item">Как сделать заказ</li>
+                                                <li class="item">Как редактироват</li>
+                                                <li class="item">Как редактироват или отменить заказ</li>
+                                                <li class="item">Мой заказ отменили</li>
+                                            </ul>
+                                        </div> -->
+
+                                    </div>
+                                </div>
+
+                                <div class="arts__main">
+                                    <div class="path">
+                                        <ul class="path_list">
+                                            <li class="path_item"><div>Главная</div></li> >
+                                            <li class="path_item path_item_current"><div>Мой заказ</div></li>
+                                        </ul>
+                                    </div>
+                                    <div class="arts__main_content_wrapper">
+                                       {% for article in articles %}
+                                        <div class="arts__content">
+                                            <h3 class="arts__content_title">
+                                                   {{ article.title }}
+                                            </h3>
+                                            <div class="arts__content_ex">
+                                                Заказ можно сделать на сайте или в мобильном приложении Talier.
+                                            </div>
+                                            <div class="arts__content_text">
+                                                {{ article.descriptions|safe }}
+                                            </div>
+                                        </div>
+                                       {% endfor %}
+                                    </div>
+
+
+                                    <form class="arts__feed">
+                                        <h3 class="arts__feed_title section_title">Не помогла статья?</h3>
+                                        <div class="arts__feed_sub">Напишите нам!</div>
+
+                                        <div class="arts__feed_fields">
+                                            <input type="email" placeholder="Ваш e-mail ">
+                                            <textarea placeholder="Ваше сообщение"></textarea>
+                                        </div>
+                                        <div class="arts__feed_btn">
+                                            <button class="btn">Отправить</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class="popup" id="login" aria-hidden="true">
+
+    <div class="popup__layer" tabindex="-1" data-micromodal-close>
+  
+      <!-- [3] -->
+      <div role="dialog" aria-modal="true" >
+        
+        <div class="popup__auth">
+          <div class="popup__auth_hi">Здравствуйте!</div>
+          <div class="popup__auth_title">
+            Войдите в личный кабинет
+          </div>
+
+          <form class="popup__auth_form">
+              <div class="popup__auth_form_item mail">
+                  <label>
+                    E-Mail 
+                    <div class="inp">
+                      <input type="email" placeholder="e.g.: elonmusk@mars.com ">
+                    </div>
+                  </label>
+              </div>
+
+              <div class="popup__auth_form_item pass">
+                <label>
+                    Ваш пароль
+                  <div class="inp">
+                    <input type="password" placeholder="e.g.: X Æ A-12 ">
+                  </div>
+                </label>
+            </div>
+
+              <div class="popup__auth_form_btn">
+                  <button class="btn">Войти</button>
+              </div>
+          </form>
+
+          <div class="popup__auth_ex">
+            Нет аккаунта? <button id="regButton">Зарегистрироваться →</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+            <div class="popup" id="signin" aria-hidden="true">
+
+    <div class="popup__layer" tabindex="-1" data-micromodal-close>
+  
+      <!-- [3] -->
+      <div role="dialog" aria-modal="true" >
+        
+        <div class="popup__auth">
+          <div class="popup__auth_hi">Здравствуйте!</div>
+          <div class="popup__auth_title">
+            Зарегистрируйтесь,что бы войти в личный кабинет
+          </div>
+
+          <form class="popup__auth_form">
+              <div class="popup__auth_form_item mail">
+                  <label>
+                    E-Mail 
+                    <div class="inp">
+                      <input type="email" placeholder="e.g.: elonmusk@mars.com ">
+                    </div>
+                  </label>
+              </div>
+
+              <div class="popup__auth_form_item pass">
+                <label>
+                    Ваш пароль
+                  <div class="inp">
+                    <input type="password" placeholder="e.g.: X Æ A-12 ">
+                  </div>
+                </label>
+            </div>
+
+              <div class="popup__auth_form_btn">
+                  <button class="btn">Зарегистрироваться</button>
+              </div>
+          </form>
+
+          <div class="popup__auth_ex">
+            Есть аккаунт? <button id="logButton">Войти →</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+            <div class="popup" id="city" aria-hidden="true">
+
+    <div class="popup__layer" tabindex="-1" data-micromodal-close>
+  
+      <!-- [3] -->
+      <div role="dialog" aria-modal="true" >
+        
+        <div class="popup__city">
+          <h2 class="popup__city_title">
+            Выберите город
+          </h2>
+          <form class="popup__city_form">
+            <div class="popup__city_search">
+              <select class="popup__city_search_select">
+                <option value="Москва">Москва</option>
+                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                <option value="Екатеринбург">Екатеринбург</option>
+              </select>
+            </div>
+            <button class="popup__city_btn">Сохранить</button>
+          </form>
+          
+        </div>
+  
+      </div>
+    </div>
+  </div>
+            <div class="popup" id="map-p" aria-hidden="true">
+
+    <div class="popup__layer" tabindex="-1" data-micromodal-close>
+  
+      <!-- [3] -->
+      <div role="dialog" aria-modal="true" >
+        
+        <div class="map">
+            <div class="map_wr">
+                <h2 class="map__head">
+                    Введите адрес
+                </h2>
+                <form class="map__form">
+                    <div class="map__form_search">
+                        <input required class="map__form_search_input" type="text" id="suggest">
+                        <button type="button" class="map__form_search_btn" type="submit" id="button">Найти</button>
+                    </div>
+                    <p class="map__form_notice" id="notice">Адрес не найден</p>
+                    <div class="map__form_map" id="map">
+    
+                    </div>
+                </form>
+            </div>
+
+            <div class="popup__adress">
+
+                <div id="street-point" class="popup__adress_head dsbl">
+                  Улица
+                </div>
+      
+                <div class="popup__adress_scdr dsbl"><span id="city-point">Город</span>, <span id="country-point">Страна</span></div>
+      
+                <form id="mapForm" class="popup__adress_form">
+                    <div class="popup__adress_form_main">
+                      <div class="popup__adress_form_main_head">
+                        <div class="name">Квартира/Офис</div>
+                        <label>
+                          <input disabled type="checkbox" class="mapInput">
+                          Частный дом
+                        </label>
+                      </div>
+                      <div class="popup__adress_form_main_input">
+                        <input disabled required type="text" class="mapInput">
+                      </div>
+                    </div>
+      
+                    <div class="popup__adress_form_ex">
+                      <div class="popup__adress_form_ex_head">
+                        Укажите дополнительную информацию для курьера
+                      </div>
+                      <div class="popup__adress_form_ex_wr">
+                        <div class="item">
+                          <input disabled required type="text" placeholder="Укажите подъезд" class="mapInput">
+                        </div>
+                        <div class="item">
+                          <input disabled required type="text" placeholder="Домофон" class="mapInput">
+                        </div>
+                        <div class="item">
+                          <input disabled required type="text" placeholder="Этаж" class="mapInput">
+                        </div>
+                      </div>
+                    </div>
+      
+                    <div class="popup__adress_form_btn">
+                      <button disabled>Выбрать</button>
+                    </div>
+                </form>
+      
+              </div>
+        </div>
+
+        
+  
+      </div>
+    </div>
+  </div>
+{% endblock %}
