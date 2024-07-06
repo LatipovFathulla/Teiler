@@ -16,7 +16,7 @@
                                 {{ carousel.descriptions|safe }}
                             </div>
                             <div class="prev__item_btn">
-                                <a href="./product.html" >ПОДРОБНЕЕ</a>
+                                <a href="{% url 'product:products' %}" >ПОДРОБНЕЕ</a>
                             </div>
                         </div>
                       {% endfor %}
@@ -53,9 +53,11 @@
                 <div class="product_slider swiper">
                     <div class="product_slider_wr swiper-wrapper">
                         {% for product in products %}
+			  {% if product.discount %}			
                             <div class="product_slide product swiper-slide">
                                     {% include 'layouts/product-block.html' %}
                              </div>
+			  {% endif %}
                         {% endfor %}
 
                     </div>
@@ -94,7 +96,7 @@
                             </div>
                             <div class="category_item_info">
                                 <div class="name">{{ category.title }}</div>
-                                <div class="price">от 2 990₽</div>
+                                <!-- <div class="price">от 2 990₽</div> -->
                             </div>
                         </a>
                         {% endfor %}

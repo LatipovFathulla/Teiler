@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the project name and root directory
-PROJECT_NAME=TukTuk
+PROJECT_NAME=Telier-new
 PROJECT_ROOT=/var/www/$PROJECT_NAME
 
 # Define the Python version and virtual environment path
@@ -40,7 +40,7 @@ After=network.target
 User=$USER
 Group=www-data
 WorkingDirectory=$PROJECT_ROOT
-ExecStart=$VENV_PATH/bin/gunicorn --access-logfile - --workers 3 --bind unix:$PROJECT_ROOT/$PROJECT_NAME.sock config.wsgi:application
+ExecStart=$VENV_PATH/bin/gunicorn --access-logfile - --workers 3 --bind unix:$PROJECT_ROOT/$PROJECT_NAME.sock teiler.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -56,8 +56,8 @@ python3 manage.py migrate
 # Create the Nginx configuration file
 sudo tee $NGINX_CONF > /dev/null <<EOF
 server {
-    listen 7575;
-    server_name 85.209.2.214;
+    listen 84;
+    server_name 185.195.27.226;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {

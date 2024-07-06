@@ -249,7 +249,7 @@ h1 { font-size: 1.5em; margin: 10px; }
                                     <div class="order">
                                         <div class="order__price">
                                             <div class="order__price_item">
-                                                <div class="new">{{ product.customers.first.price }} ₽</div>
+                                                <div class="new">{{ product.real_price }} ₽</div>
                                                 {% if product.is_discount %}
                                                     <div class="old">{{ product.price }} ₽</div>
                                                 {% endif %}
